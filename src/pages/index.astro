@@ -55,9 +55,9 @@ const chapters = modules.sort((a, b) => a.file.localeCompare(b.file));
       <section class="offtrail" aria-labelledby="offtrail-title">
         <h2 class="section-title" id="offtrail-title">Off the trail</h2>
         <ul>
-          <li><b>Home</b>Almora. I go back as often as I can. <span class="ask">Favourite spot or food there?</span></li>
-          <li><b>Weekends</b>Trekking and hiking. <span class="ask">Which trek would you send a friend on first?</span></li>
-          <li><b>Table tennis</b>I play whenever I can find a table and someone to lose to. <span class="ask">Is that true? Change it to how you'd say it.</span></li>
+          <li><b>Home</b>Almora. I go back as often as I can. {import.meta.env.DEV && <span class="ask">Favourite spot or food there?</span>}</li>
+          <li><b>Weekends</b>Trekking and hiking. {import.meta.env.DEV && <span class="ask">Which trek would you send a friend on first?</span>}</li>
+          <li><b>Table tennis</b>I play whenever I can find a table and someone to lose to. {import.meta.env.DEV && <span class="ask">Is that true? Change it to how you'd say it.</span>}</li>
           <li><b>Right now</b>I just bought a PS5 and I'm playing God of War.</li>
         </ul>
       </section>

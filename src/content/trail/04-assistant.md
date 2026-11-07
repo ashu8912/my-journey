@@ -9,7 +9,7 @@ I wrote Headlamp's AI assistant plugin. You ask it something about your cluster 
 
 In March 2026 I worked with the folks behind [HolmesGPT](https://github.com/HolmesGPT/holmesgpt) to [bring their agent into the assistant](https://github.com/headlamp-k8s/plugins/pull/560). That integration became a demo in the KubeCon EU 2026 keynote. I didn't give the keynote. I built and prepped the demo that ran in it.
 
-<span class="ask">What was it like watching it on the big screen? Anything that nearly broke the night before?</span>
+<p class="ask">What was it like watching it on the big screen? Anything that nearly broke the night before?</p>
 
 The same assistant now ships inside [AKS desktop](https://github.com/Azure/aks-desktop/pull/419).
 

@@ -20,6 +20,6 @@ Some of the things I built along the way:
 
 I also mentored six people through LFX and Google Summer of Code. Every one of them shipped a plugin that people use, for Volcano, Cluster API, Kubeflow and Knative.
 
-<span class="ask">One Headlamp moment you still remember: a bug that took a weekend, a review that taught you something, a release day.</span>
+<p class="ask">One Headlamp moment you still remember: a bug that took a weekend, a review that taught you something, a release day.</p>
 
 <p class="stat">130 merged PRs in Headlamp · 27 in the plugins repo</p>
