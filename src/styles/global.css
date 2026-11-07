@@ -1,57 +1,18 @@
-/* ---------- Palettes: soft, low-glare. No pure white, no pure black. ---------- */
-:root,
-[data-palette='oat'] {
-  /* oat paper + moss green + soft clay */
-  --bg: #f4f1ea;
-  --bg-2: #e9e4d9;
-  --ink: #2f2b26;
-  --muted: #6b645a;
-  --accent: #4f7262;
-  --pop: #b8714f;
-  --on-accent: #f4f1ea;
-  --mtn: #c9cfbf;
-  --mtn-back: #dfe0d3;
-  --snow: #fbfaf6;
+/* ---------- Colours: clean white + ink blue ----------
+   Pure white page. Text is near-black (#1c1c1c) so it stays sharp without glare. */
+:root {
+  --bg: #ffffff;
+  --bg-2: #f4f4f2;
+  --ink: #1c1c1c;
+  --muted: #666660;
+  --accent: #2f4fa8;
+  --pop: #e0603f;
+  --on-accent: #ffffff;
+  --mtn: #e3e7ef;
+  --mtn-back: #f0f2f7;
+  --snow: #ffffff;
 }
-[data-palette='fog'] {
-  /* morning fog over the valley: grey-blue, slate, muted copper */
-  --bg: #eceff0;
-  --bg-2: #dfe4e6;
-  --ink: #29313a;
-  --muted: #5f6b75;
-  --accent: #46647f;
-  --pop: #a8704f;
-  --on-accent: #eceff0;
-  --mtn: #c3ccd2;
-  --mtn-back: #d8dee2;
-  --snow: #f7f9fa;
-}
-[data-palette='sand'] {
-  /* warm sand and walnut, like an old wooden pahadi house */
-  --bg: #f2ebdf;
-  --bg-2: #e7dece;
-  --ink: #362e26;
-  --muted: #6e6253;
-  --accent: #75583b;
-  --pop: #a35d48;
-  --on-accent: #f2ebdf;
-  --mtn: #d3c6ad;
-  --mtn-back: #e3d9c5;
-  --snow: #faf6ef;
-}
-[data-palette='night'] {
-  /* soft dark: charcoal, not black; text is off-white, not white */
-  --bg: #1f2226;
-  --bg-2: #2a2e33;
-  --ink: #dcd8d0;
-  --muted: #9a978f;
-  --accent: #9bbba6;
-  --pop: #d6a07a;
-  --on-accent: #1f2226;
-  --mtn: #353a40;
-  --mtn-back: #2b3035;
-  --snow: #cfcbc3;
-}
+
 :root {
   --goat-body: #a0673f;
   --goat-belly: #ecdcc4;
@@ -179,18 +140,6 @@ footer { padding: 72px 0 0; }
   .goat *, .goat.walking * { animation: none !important; }
 }
 
-/* ---------- Palette switcher (temporary) ---------- */
-.palette-switch {
-  position: fixed; left: 16px; bottom: 16px; z-index: 10;
-  display: flex; align-items: center; gap: 6px;
-  background: var(--bg-2); padding: 6px 10px; border-radius: 99px;
-  font-family: var(--mono); font-size: 12px; color: var(--muted);
-}
-.sw { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--ink); cursor: pointer; padding: 0; }
-.sw-oat { background: linear-gradient(135deg, #f4f1ea 50%, #4f7262 50%); }
-.sw-fog { background: linear-gradient(135deg, #eceff0 50%, #46647f 50%); }
-.sw-sand { background: linear-gradient(135deg, #f2ebdf 50%, #75583b 50%); }
-.sw-night { background: linear-gradient(135deg, #1f2226 50%, #9bbba6 50%); }
 
 /* ---------- Icons & logos ---------- */
 .icon { width: 16px; height: 16px; flex: none; }
