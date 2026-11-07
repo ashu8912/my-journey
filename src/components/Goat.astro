@@ -1,0 +1,34 @@
+---
+// A little Himalayan goat. Faces right by default.
+const { class: className = '', ...rest } = Astro.props;
+---
+<svg viewBox="0 0 120 100" class:list={['goat', className]} aria-hidden="true" {...rest}>
+  <g class="goat-flip">
+    <g class="goat-bob">
+      <!-- far legs (darker) -->
+      <g class="leg leg-a"><rect x="40" y="60" width="6" height="29" rx="3" fill="var(--goat-dark)" /><rect x="39" y="86" width="8" height="5" rx="2" fill="var(--goat-hoof)" /></g>
+      <g class="leg leg-b"><rect x="80" y="60" width="6" height="29" rx="3" fill="var(--goat-dark)" /><rect x="79" y="86" width="8" height="5" rx="2" fill="var(--goat-hoof)" /></g>
+      <!-- tail -->
+      <path class="tail" d="M25 47 q-9 -7 -6 -15 q5 5 10 11z" fill="var(--goat-body)" />
+      <!-- body -->
+      <ellipse cx="54" cy="55" rx="32" ry="17" fill="var(--goat-body)" />
+      <ellipse cx="52" cy="62" rx="22" ry="7" fill="var(--goat-belly)" />
+      <!-- near legs -->
+      <g class="leg leg-b"><rect x="30" y="60" width="7" height="30" rx="3.5" fill="var(--goat-body)" /><rect x="29" y="87" width="9" height="5" rx="2" fill="var(--goat-hoof)" /></g>
+      <g class="leg leg-a"><rect x="71" y="60" width="7" height="30" rx="3.5" fill="var(--goat-body)" /><rect x="70" y="87" width="9" height="5" rx="2" fill="var(--goat-hoof)" /></g>
+      <!-- neck -->
+      <path d="M72 50 Q78 32 87 26 L97 35 Q88 48 84 62 Z" fill="var(--goat-body)" />
+      <g class="goat-head">
+        <!-- horns curve back like a Himalayan tahr/ghoral -->
+        <path d="M88 22 Q82 4 66 7 Q79 9 83 25 Z" fill="var(--goat-horn)" />
+        <path d="M92 21 Q90 5 76 4 Q87 9 87 23 Z" fill="var(--goat-horn)" opacity=".8" />
+        <ellipse cx="95" cy="29" rx="12.5" ry="9" fill="var(--goat-body)" transform="rotate(22 95 29)" />
+        <ellipse cx="104" cy="35" rx="6.5" ry="5.5" fill="var(--goat-belly)" />
+        <circle cx="106" cy="34" r="1" fill="var(--goat-hoof)" />
+        <path class="ear" d="M85 27 q-11 1 -14 8 q9 1 15 -4z" fill="var(--goat-dark)" />
+        <g class="eye"><circle cx="96" cy="25.5" r="2.4" fill="#1a1410" /><circle cx="96.8" cy="24.7" r=".8" fill="#fff" /></g>
+        <path d="M101 39 l2.5 10 l3 -10z" fill="var(--goat-belly)" />
+      </g>
+    </g>
+  </g>
+</svg>

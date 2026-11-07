@@ -1,0 +1,108 @@
+---
+import Base from '../layouts/Base.astro';
+import Goat from '../components/Goat.astro';
+import Trail from '../components/Trail.astro';
+import Icon from '../components/Icon.astro';
+import Logo from '../components/Logo.astro';
+
+const modules = Object.values(import.meta.glob('../content/trail/*.md', { eager: true })) as any[];
+const chapters = modules.sort((a, b) => a.file.localeCompare(b.file));
+---
+<Base>
+  <div class="page">
+    <main>
+      <header class="hero">
+        <div class="hero-goat">
+          <button type="button" id="heroGoatBtn" aria-label="Say hi to Rocket the goat">
+            <Goat id="heroGoat" />
+          </button>
+          <div class="bubble" id="bubble" aria-live="polite">Namaste! I'm Rocket. Climb with me? ↓</div>
+        </div>
+        <h1>Hi, I'm Ashu.<span class="sub">I write software in the open.</span></h1>
+        <p>
+          I'm from Almora, up in the hills of Uttarakhand, and I live in Delhi now. For six years
+          I've worked on open source: Go on the server, React and TypeScript on the screen. These
+          days I work on alerting at <a href="https://signoz.io">SigNoz</a>.
+        </p>
+        <nav class="links" aria-label="Elsewhere">
+          <a class="pill" href="https://github.com/ashu8912"><Icon name="github" />GitHub</a>
+          <a class="pill" href="https://www.linkedin.com/in/ashu-ghildiyal"><Icon name="linkedin" />LinkedIn</a>
+          <a class="pill" href="mailto:ashughildiyal5@gmail.com"><Icon name="email" />Email</a>
+          <a class="pill alt" href="/resume.pdf"><Icon name="resume" />Resume</a>
+        </nav>
+        <div class="worked">
+          <span class="worked-label">Worked at</span>
+          <Logo name="kinvolk" showLabel />
+          <span class="arrow" aria-hidden="true">→</span>
+          <Logo name="microsoft" showLabel />
+          <span class="arrow" aria-hidden="true">→</span>
+          <Logo name="signoz" showLabel />
+        </div>
+        <p class="scroll-hint">Rocket climbs as you scroll. It's 329 merged PRs to the top.</p>
+      </header>
+
+      {chapters.map(({ frontmatter, Content }) => (
+        <section class="chapter" data-chapter data-year={frontmatter.year} id={frontmatter.slug}>
+          <div class="chapter-meta">
+            <span class="year">{frontmatter.year}</span>
+            {(frontmatter.logos ?? []).map((l: string) => <Logo name={l} />)}
+          </div>
+          <h2>{frontmatter.title}</h2>
+          <Content />
+        </section>
+      ))}
+
+      <section class="offtrail" aria-labelledby="offtrail-title">
+        <h2 class="section-title" id="offtrail-title">Off the trail</h2>
+        <ul>
+          <li><b>Home</b>Almora. I go back as often as I can. <span class="ask">Favourite spot or food there?</span></li>
+          <li><b>Weekends</b>Trekking and hiking. <span class="ask">Which trek would you send a friend on first?</span></li>
+          <li><b>Table tennis</b>I play whenever I can find a table and someone to lose to. <span class="ask">Is that true? Change it to how you'd say it.</span></li>
+          <li><b>Right now</b>I just bought a PS5 and I'm playing God of War.</li>
+        </ul>
+      </section>
+
+      <section class="chapter" aria-labelledby="talks-title">
+        <h2 class="section-title" id="talks-title">Talks & community</h2>
+        <ul>
+          <li class="talk"><Logo name="fossasia" /><span><b>FOSSASIA Summit 2026</b>: I gave a talk, "Build Your Own Kubernetes Dashboard".</span></li>
+          <li><b>KubeCon EU 2026</b>: built the Headlamp + HolmesGPT demo shown in the keynote.</li>
+          <li><b>KubeCon NA 2023</b>: built the React dashboards for the Inspektor Gadget plugin.</li>
+          <li>Mentor for CNCF LFX and Google Summer of Code (6 mentees).</li>
+        </ul>
+      </section>
+
+      <footer>
+        <h2 class="section-title">Say hi</h2>
+        <p>The best way to reach me is email. I'm also on GitHub and LinkedIn.</p>
+        <nav class="links" aria-label="Contact">
+          <a class="pill" href="mailto:ashughildiyal5@gmail.com"><Icon name="email" />ashughildiyal5@gmail.com</a>
+          <a class="pill" href="https://github.com/ashu8912"><Icon name="github" />ashu8912</a>
+          <a class="pill" href="https://www.linkedin.com/in/ashu-ghildiyal"><Icon name="linkedin" />ashu-ghildiyal</a>
+        </nav>
+      </footer>
+    </main>
+    <Trail />
+  </div>
+</Base>
+
+<script>
+  const lines = [
+    'Meh-eh-eh!',
+    "I'm Rocket. I'm from Almora too.",
+    'Scroll down. The view is better up top.',
+    'Yes, I chew on cables. No, not yours.',
+    "Namaste! I'm Rocket. Climb with me? ↓",
+  ];
+  let i = 0;
+  const btn = document.getElementById('heroGoatBtn');
+  const goat = document.getElementById('heroGoat');
+  const bubble = document.getElementById('bubble');
+  btn?.addEventListener('click', () => {
+    if (!goat || !bubble) return;
+    bubble.textContent = lines[i++ % lines.length];
+    goat.classList.remove('bleat');
+    void (goat as unknown as HTMLElement).getBoundingClientRect();
+    goat.classList.add('bleat');
+  });
+</script>

@@ -1,0 +1,28 @@
+---
+// Company / project logos. Images live in public/logos.
+const LOGOS: Record<string, { label: string; src?: string; href: string }> = {
+  kinvolk: { label: 'Kinvolk', src: '/logos/kinvolk.png', href: 'https://github.com/kinvolk' },
+  flatcar: { label: 'Flatcar Container Linux', src: '/logos/flatcar.png', href: 'https://www.flatcar.org/' },
+  microsoft: { label: 'Microsoft', href: 'https://www.microsoft.com/' },
+  headlamp: { label: 'Headlamp', src: '/logos/headlamp.png', href: 'https://headlamp.dev/' },
+  signoz: { label: 'SigNoz', src: '/logos/signoz.png', href: 'https://signoz.io/' },
+  fossasia: { label: 'FOSSASIA', src: '/logos/fossasia.jpg', href: 'https://fossasia.org/' },
+};
+const { name, showLabel = false } = Astro.props as { name: string; showLabel?: boolean };
+const logo = LOGOS[name];
+---
+{logo && (
+  <a class:list={['logo', { 'with-label': showLabel }]} href={logo.href} title={logo.label}>
+    {logo.src ? (
+      <img src={logo.src} alt={showLabel ? '' : logo.label} width="28" height="28" loading="lazy" />
+    ) : (
+      <svg viewBox="0 0 23 23" width="28" height="28" role="img" aria-label={showLabel ? undefined : logo.label} aria-hidden={showLabel ? 'true' : undefined} class="ms">
+        <rect x="1" y="1" width="10" height="10" fill="#f25022" />
+        <rect x="12" y="1" width="10" height="10" fill="#7fba00" />
+        <rect x="1" y="12" width="10" height="10" fill="#00a4ef" />
+        <rect x="12" y="12" width="10" height="10" fill="#ffb900" />
+      </svg>
+    )}
+    {showLabel && <span>{logo.label}</span>}
+  </a>
+)}

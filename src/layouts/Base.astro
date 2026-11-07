@@ -1,0 +1,32 @@
+---
+import '../styles/global.css';
+import PaletteSwitch from '../components/PaletteSwitch.astro';
+const { title = 'Ashu Ghildiyal', description = 'Ashu Ghildiyal, software engineer from Almora. Open source, Go, React, Kubernetes.' } = Astro.props;
+---
+<!doctype html>
+<html lang="en" data-palette="oat" data-dev={import.meta.env.DEV ? '' : undefined}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;600&family=Caveat:wght@600&display=swap" rel="stylesheet" />
+    <script is:inline>
+      // Saved choice wins; otherwise follow the visitor's light/dark setting.
+      (function () {
+        var valid = ['oat', 'fog', 'sand', 'night'];
+        var p = null;
+        try { p = localStorage.getItem('palette'); } catch (e) {}
+        if (valid.indexOf(p) === -1) p = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'oat';
+        document.documentElement.dataset.palette = p;
+      })();
+    </script>
+  </head>
+  <body>
+    <slot />
+    <PaletteSwitch />
+  </body>
+</html>
